@@ -71,7 +71,7 @@ Se encuentra la conexion a la base de datos donde se debe cambiar los parametros
     - npm install --save-dev @types/node -D
 
 ### Frontend
-1. Clonar el repositorio.
+1. Clonar el repositorio: https://github.com/Camilo2211/prueba_tecnica_detektor.git
 2. Navegar a la carpeta del frontend-cliente:
    ```bash
    cd frontend-cliente
@@ -81,7 +81,7 @@ Se encuentra la conexion a la base de datos donde se debe cambiar los parametros
    http://localhost:4200
 
 ### Backend
-1. Clonar el repositorio.
+1. Clonar el repositorio : https://github.com/Camilo2211/prueba_tecnica_detektor.git
 2. Navegar a la carpeta del Backend-servidor:
    ```bash
    cd Backend-servidor
