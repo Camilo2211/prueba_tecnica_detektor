@@ -1,0 +1,73 @@
+<div cdkDropListGroup class="container">
+  <div class="row">
+    <h1 class="mb-5">Asignacion de grupos</h1>
+  </div>
+  <button (click)="goBack()" class="btn btn-dark mb-3">
+    Atras
+  </button>
+  <div class="row">
+    <div class="col-4">
+      <h2>Vehicúlos</h2>
+      <div
+        cdkDropList
+        [cdkDropListData]="vehicles"
+        class="example-list"
+        id="vehicles"
+      >
+        <div
+          *ngFor="let vehicle of vehicles"
+          class="example-box"
+          cdkDrag
+          id="{{ vehicle.id }}"
+        >
+          {{ vehicle.marca }} - {{ vehicle.modelo }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-8">
+      <h2>Grupos</h2>
+      <div class="row row-cols-3">
+        <div *ngFor="let group of groups; $index" class="" cdkDrag>
+          <h5>{{ group.group_name }}</h5>
+          <div
+            cdkDropList
+            [cdkDropListData]="group.vehicles"
+            class="example-list col-12"
+            (cdkDropListDropped)="drop($event)"
+            id="{{ group.group_id }}"
+          >
+            <div
+              *ngFor="let vehicle of group.vehicles"
+              class="example-box"
+              cdkDrag
+              id="{{ vehicle.vehicle_id }}"
+            >
+              {{ vehicle.marca }} - {{ vehicle.modelo }}
+              <div
+                class="delete-icon ms-3"
+                style="cursor: pointer;"
+                (click)="deleteFromGroup(group.group_id, vehicle.vehicle_id)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="17"
+                  viewBox="0 0 16 17"
+                  fill="none"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M10.9643 6.48521V13.2989H5.53571V6.48521H10.9643ZM9.94642 2.39697H6.55357L5.875 3.07834H3.5V4.44109H13V3.07834H10.625L9.94642 2.39697ZM12.3214 5.12246H4.17857V13.2989C4.17857 14.0484 4.78928 14.6617 5.53571 14.6617H10.9643C11.7107 14.6617 12.3214 14.0484 12.3214 13.2989V5.12246Z"
+                    fill="#292929"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

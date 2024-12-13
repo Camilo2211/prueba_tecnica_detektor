@@ -1,0 +1,66 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Grupos</h2>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Crear Grupo</h3>
+        <form [formGroup]="grupoForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Nombre del Grupo</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="name" 
+              formControlName="name"
+              [ngClass]="{'is-invalid': submitted && f['name'].errors}"
+            >
+            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+              <div *ngIf="f['name'].errors['required']">El nombre es requerido</div>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="describe" class="form-label">Descripción</label>
+            <textarea 
+              class="form-control" 
+              id="describe" 
+              formControlName="describe"
+              [ngClass]="{'is-invalid': submitted && f['describe'].errors}"
+            ></textarea>
+            <div *ngIf="submitted && f['describe'].errors" class="invalid-feedback">
+              <div *ngIf="f['describe'].errors['required']">La descripción es requerida</div>
+            </div>
+          </div>
+  
+          <div>
+            <button type="submit" class="btn btn-primary me-3" [disabled]="loading">
+              {{ loading ? "Guardando..." : "Guardar Grupo" }}
+            </button>
+            <button type="button" (click)="goBack()" class="btn btn-dark me-3">Atras</button>
+          </div>
+        </form>
+  
+        <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+          {{ errorMessage }}
+        </div>
+      </div>
+  
+      <div class="col-md-6">
+        <h3>Lista de Grupos</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let group of groups">
+              <td>{{ group.nombre }}</td>
+              <td>{{ group.descripcion }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
